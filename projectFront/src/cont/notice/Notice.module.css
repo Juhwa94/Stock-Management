@@ -1,0 +1,179 @@
+/* =========================
+   전체 영역
+========================= */
+
+.container{
+    width:1000px;
+    margin:60px auto;
+    font-family:'맑은 고딕', sans-serif;
+    color:#222;
+}
+
+/* =========================
+   상단
+========================= */
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.title{
+    font-size:34px;
+    font-weight:bold;
+    margin:0;
+}
+
+.writeButton{
+    text-decoration:none;
+    background:#222;
+    color:#fff;
+    padding:10px 20px;
+    border-radius:4px;
+    transition:.2s;
+}
+
+.writeButton:hover{
+    background:#444;
+}
+
+/* =========================
+   게시판
+========================= */
+
+.boardTable{
+    width:100%;
+    border-collapse:collapse;
+    table-layout:fixed;
+}
+
+.boardTable th,
+.boardTable td{
+    padding:16px 10px;
+    border-bottom:1px solid #e5e5e5;
+    text-align:center;
+    vertical-align:middle;
+}
+
+
+.boardTable th:nth-child(1),
+.boardTable td:nth-child(1){
+    width: 55%;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.boardTable th:nth-child(2),
+.boardTable td:nth-child(2){
+    width: 15%;
+    text-align: center;
+}
+
+.boardTable th:nth-child(3),
+.boardTable td:nth-child(3){
+    width: 10%;
+    text-align: center;
+}
+
+.boardTable th:nth-child(4),
+.boardTable td:nth-child(4){
+    width: 20%;
+    text-align: center;
+}
+/* =========================
+   제목 링크
+========================= */
+
+.titleLink{
+    display:block;
+    color:#000000;
+    text-decoration:none;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+  .titleLink:hover{
+    color:#030303;
+} 
+
+.noData{
+    padding:40px;
+    text-align:center;
+    color:#888;
+}
+
+/* =========================
+   검색
+========================= */
+
+.searchArea{
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    gap:10px;
+    margin:30px 0;
+}
+
+.select{
+    width:120px;
+    height:38px;
+    padding:0 10px;
+}
+
+.searchInput{
+    width:260px;
+    height:38px;
+    padding:0 12px;
+}
+
+.searchButton{
+    height:38px;
+    padding:0 20px;
+    border:none;
+    background:#222;
+    color:#fff;
+    cursor:pointer;
+}
+
+.searchButton:hover{
+    background:#444;
+}
+
+/* =========================
+   페이지
+========================= */
+
+.pagination{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    margin-top:35px;
+}
+
+.pageButton{
+    min-width:38px;
+    height:38px;
+    border:none;
+    background:#ffffff;
+    cursor:pointer;
+    color: #888;
+}
+
+.pageButton:hover{
+    background:#ffffff;
+}
+
+.activePage{
+    min-width:38px;
+    height:38px;
+    border:none;
+    background:#ffffff;
+    color:#000000;
+    cursor:pointer; 
+
+
+}

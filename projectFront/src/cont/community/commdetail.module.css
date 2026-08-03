@@ -1,0 +1,206 @@
+.container {
+    background-color: #ffffff;
+    color: #000000;
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 40px;
+    box-sizing: border-box;
+    font-family: "맑은 고딕", sans-serif;
+}
+
+/* 카테고리 */
+.category {
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: #666;
+    letter-spacing: 1px;
+}
+
+/* 제목 */
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+/* 제목 수정 인풋 */
+.titleInput {
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 8px 10px;
+    border: 1px solid #999;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    outline: none;
+}
+
+/* ===================================================
+   작성 정보 및 수정/삭제 버튼 (대안 A)
+   =================================================== */
+.metaHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #dddddd;
+    padding-bottom: 12px;
+    margin-bottom: 25px;
+}
+
+.info {
+    display: flex;
+    gap: 15px;
+    font-size: 13px;
+    color: #777777;
+}
+
+/* 상단 우측 수정/삭제 텍스트 버튼 영역 */
+.actionGroup {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.actionTextBtn {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 13px;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.actionTextBtn:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+.actionTextBtn.delete:hover {
+    color: #000000; /* 삭제 마우스 호버 시 붉은색 */
+}
+
+.divider {
+    font-size: 11px;
+    color: #ccc;
+}
+
+/* ===================================================
+   본문 및 이미지
+   =================================================== */
+.content {
+    font-size: 15px;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    margin-bottom: 30px;
+    word-break: break-all;
+}
+
+/* 수정모드 텍스트에리어 */
+.contentTextarea {
+    width: 100%;
+    min-height: 200px;
+    padding: 10px;
+    border: 1px solid #999;
+    font-size: 15px;
+    line-height: 1.7;
+    box-sizing: border-box;
+    outline: none;
+    resize: vertical;
+    margin-bottom: 30px;
+}
+
+.imageBox {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.image {
+    max-width: 100%;
+    width: 500px;
+    border: 1px solid #dddddd;
+}
+
+/* ===================================================
+   하단 목록 버튼 (블랙 둥근 사각형)
+   =================================================== */
+.buttonArea {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 140px;
+    height: 42px;
+    background: #000000;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+ .button:hover {
+    color: #ffffff;
+} 
+
+/* 푸터 및 로딩 */
+.footer {
+    border-top: 1px solid #333333;
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 20px;
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+.footerTitle {
+    font-weight: bold;
+}
+
+.footerLink {
+    cursor: pointer;
+}
+
+.footerLink:hover {
+    text-decoration: underline;
+}
+
+.loading {
+    text-align: center;
+    padding: 100px 0;
+    font-size: 18px;
+    color: #666666;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .metaHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .info {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .image {
+        width: 100%;
+    }
+}

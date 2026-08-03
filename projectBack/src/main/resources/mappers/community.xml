@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.ictedu.projectBack.dao.CommunityDao">
+	<insert id="add" parameterType="comivo">
+		INSERT INTO community values(community_seq.NEXTVAL,
+		#{ctitle}, #{cwriter}, #{ccontent}, #{cimgn}, 0, SYSDATE, #{membernum})
+	</insert>
+	<select id="list" parameterType="map" resultType="comivo"> SELECT cnum, ctitle,
+		cwriter, CCONTENT, chit, cdate, cimgn, membernum, row_num FROM (SELECT cnum,
+		ctitle, cwriter, CCONTENT, chit, cdate, cimgn, membernum, ROW_NUMBER() OVER(ORDER
+		BY cnum desc) AS row_num FROM community <if
+			test="searchType != null and searchValue != null">
+			<where>
+				<choose>
+					<when test="searchType == 1">
+						cwriter like '%' || #{searchValue} || '%'
+					</when>
+					<when test="searchType == 2">
+						ctitle like '%' || #{searchValue} || '%'
+					</when>
+					<when test="searchType == 3">
+						ccontent like '%' || #{searchValue} || '%'
+					</when>
+				</choose>
+			</where>
+		</if>
+		) numbered_rows WHERE row_num BETWEEN #{begin} AND #{end} </select>
+	<select id="totalCount" resultType="int" parameterType="map"> SELECT
+		COUNT(*) cnt FROM community <if
+			test="searchType != null and searchValue != null">
+			<where>
+				<choose>
+					<when test="searchType == 1">
+						cwriter like '%' || #{searchValue} || '%'
+					</when>
+					<when test="searchType == 2">
+						ctitle like '%' || #{searchValue} || '%'
+					</when>
+					<when test="searchType == 3">
+						ccontent like '%' || #{searchValue} || '%'
+					</when>
+				</choose>
+			</where>
+		</if>
+		
+	</select>
+	<select id="myPostList" parameterType="map" resultType="comivo">
+    SELECT *
+    FROM (SELECT cnum, ctitle, cwriter, ccontent, chit, cdate, cimgn, membernum,
+			ROW_NUMBER() OVER (ORDER BY cnum DESC) AS row_num FROM community WHERE membernum = #{membernum})
+	</select>
+	
+	<update id="update" parameterType="comivo">
+    UPDATE community
+    SET
+        ctitle = #{ctitle},
+        ccontent = #{ccontent},
+        cimgn = #{cimgn}
+    WHERE cnum = #{cnum}
+</update>
+
+	<update id="chit" parameterType="int">
+		UPDATE community set chit=chit+1 WHERE cnum=#{cnum}
+	</update>
+
+	<select id="detail" parameterType="int" resultType="comivo">
+		SELECT cnum, ctitle, cwriter, CCONTENT, chit, cdate, cimgn, membernum FROM community
+		WHERE cnum=#{cnum}
+	</select>
+
+	<delete id="del" parameterType="int">
+		DELETE FROM community WHERE cnum=#{cnum}
+	</delete>
+</mapper>

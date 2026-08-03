@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.ictedu.projectBack.dao.ReplyDao">
+
+	<insert id="addComment" parameterType="reply">
+	insert into reply values(reply_seq.nextVal,
+	#{rcode},#{rwriter},#{rcontent},sysdate,1)
+	</insert>
+
+	<select id="listReply" resultType="reply" parameterType="int">
+		select rnum, rwriter,rcontent, rdate from reply where rcode=#{num} order by 1 desc 
+	</select>
+</mapper>

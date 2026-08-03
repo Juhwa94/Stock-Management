@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.ictedu.projectBack.dao.CommentsDao">
+	<insert id="add" parameterType="tomivo">
+		INSERT INTO comments values(comments_seq.NEXTVAL,
+		 #{cwriter}, #{ccontent}, SYSDATE, #{communitynum},#{membernum} )
+	</insert>
+	<select id="list" parameterType="map" resultType="tomivo"> SELECT cnum,
+		cwriter, CCONTENT,  cregdate, communitynum, membernum, row_num FROM (SELECT cnum,
+		cwriter, CCONTENT,  cregdate, communitynum, membernum, ROW_NUMBER() OVER(ORDER
+		BY cnum desc) AS row_num FROM comments WHERE communitynum = #{communitynum} <if
+			test="searchType != null and searchValue != null">
+				<choose>
+					<when test="searchType == 1">
+						AND cwriter like '%' || #{searchValue} || '%'
+					</when>
+				<!--	<when test="searchType == 2">
+						title like '%' || #{searchValue} || '%'
+					</when> -->
+					<when test="searchType == 2">
+						AND ccontent like '%' || #{searchValue} || '%'
+					</when>
+				</choose>
+		</if>
+		) numbered_rows WHERE row_num BETWEEN #{begin} AND #{end} </select>
+	<select id="totalCount" resultType="int" parameterType="map"> SELECT
+		COUNT(*) cnt FROM comments WHERE communitynum = #{communitynum} <if
+			test="searchType != null and searchValue != null">
+				<choose>
+					<when test="searchType == 1">
+						AND cwriter like '%' || #{searchValue} || '%'
+					</when>
+				<!-- <when test="searchType == 2">
+						title like '%' || #{searchValue} || '%'
+					</when> -->	
+					<when test="searchType == 2">
+						AND ccontent like '%' || #{searchValue} || '%'
+					</when>
+				</choose>
+		</if>
+	</select>
+
+	<update id="update" parameterType="tomivo">
+    UPDATE comments
+    SET
+        ccontent = #{ccontent} 
+    WHERE cnum = #{cnum}
+</update>
+
+
+	<select id="detail" parameterType="int" resultType="tomivo">
+		SELECT cnum, cwriter, CCONTENT, cregdate, communitynum, membernum FROM comments
+		WHERE cnum=#{cnum}
+	</select>
+
+	<delete id="del" parameterType="int">
+		DELETE FROM comments WHERE cnum=#{cnum}
+	</delete>
+</mapper>

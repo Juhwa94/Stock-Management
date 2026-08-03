@@ -1,0 +1,295 @@
+/*****************************************
+                Layout
+*****************************************/
+
+.container {
+  --primary-color: #6c5ce7;
+  --primary-hover: #5b4bc4;
+  --text-main: #2d3436;
+  --text-muted: #636e72;
+  --bg-light: #f8f9fa;
+  --border-color: #e9ecef;
+  --radius-sm: 8px;
+  --radius-md: 18px;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.08);
+
+  max-width: 950px;
+  margin: 60px auto;
+  padding: 0 24px;
+  color: var(--text-main);
+  font-family: -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+}
+
+
+/*****************************************
+                Title
+*****************************************/
+
+.title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: var(--text-main);
+  position: relative;
+}
+
+.title::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 4px;
+  margin: 12px auto 0;
+  border-radius: 50px;
+  background: var(--primary-color);
+}
+
+
+/*****************************************
+                Form
+*****************************************/
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 24px;
+  padding: 40px;
+  background: white;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+}
+
+
+/*****************************************
+              Board Table
+*****************************************/
+
+.boardTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.boardTable th {
+  width: 130px;
+  padding: 22px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-main);
+  text-align: left;
+  background-color: var(--bg-light);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.boardTable td {
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.boardTable tr:last-child th,
+.boardTable tr:last-child td {
+  border-bottom: none;
+}
+
+
+/*****************************************
+                Input
+*****************************************/
+
+.input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  font-size: 15px;
+  background: #fafafa;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.input:hover {
+  border-color: #d8d8d8;
+}
+
+.input:focus {
+  background: white;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(108, 92, 231, 0.15);
+}
+
+
+/*****************************************
+              Textarea
+*****************************************/
+
+.textarea {
+  width: 100%;
+  min-height: 250px;
+  padding: 18px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: #fafafa;
+  resize: none;
+  line-height: 1.7;
+  font-size: 15px;
+  transition: all 0.25s ease;
+}
+
+.textarea:focus {
+  background: white;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(108, 92, 231, 0.15);
+  outline: none;
+}
+
+
+/*****************************************
+              File Input
+*****************************************/
+
+.fileInput {
+  width: 100%;
+  padding: 10px;
+}
+
+
+/*****************************************
+           Secret Checkbox
+*****************************************/
+
+.secretBox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+}
+
+.secretBox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+
+/*****************************************
+            Preview Image
+*****************************************/
+
+.previewBox {
+  text-align: center;
+  padding: 20px;
+}
+
+.previewImage {
+  max-width: 250px;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+
+/*****************************************
+                Buttons
+*****************************************/
+
+.button,
+.button:link,
+.button:visited {
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 110px;
+  height: 45px;
+  padding: 0 24px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    #7d6ef0
+  );
+
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+
+  box-shadow:
+    0 4px 12px rgba(108, 92, 231, 0.25);
+}
+
+.button:hover {
+  background: linear-gradient(
+    135deg,
+    var(--primary-hover),
+    var(--primary-color)
+  );
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 18px rgba(108, 92, 231, 0.35);
+}
+
+.button:active {
+  transform: scale(0.98);
+}
+
+
+/*****************************************
+            Button Area
+*****************************************/
+
+.buttonArea {
+
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+
+/*****************************************
+                Comment
+*****************************************/
+
+.commentContent {
+  width: 100%;
+  min-height: 150px;
+}
+
+
+/*****************************************
+             Detail Image
+*****************************************/
+
+.detail img {
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+  margin-top: 20px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
